@@ -175,6 +175,12 @@ mbfl_identify_encoding(mbfl_string *string, enum mbfl_no_encoding *elist, int el
 
 MBFLAPI extern const mbfl_encoding *
 mbfl_identify_encoding2(mbfl_string *string, const mbfl_encoding **elist, int elistsz, int strict);
+
+MBFLAPI extern const char*
+mbfl_identify_encoding_name(mbfl_string *string, enum mbfl_no_encoding *elist, int elistsz, int strict);
+
+MBFLAPI extern enum mbfl_no_encoding
+mbfl_identify_encoding_no(mbfl_string *string, enum mbfl_no_encoding *elist, int elistsz, int strict);
 /*
  * strlen
  */

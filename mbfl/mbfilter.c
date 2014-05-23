@@ -797,6 +797,36 @@ mbfl_identify_encoding2(mbfl_string *string, const mbfl_encoding **elist, int el
 	return encoding;
 }
 
+const char*
+mbfl_identify_encoding_name(mbfl_string *string, enum mbfl_no_encoding *elist, int elistsz, int strict)
+{
+	const mbfl_encoding *encoding;
+
+	encoding = mbfl_identify_encoding(string, elist, elistsz, strict);
+	if (encoding != NULL &&
+	    encoding->no_encoding > mbfl_no_encoding_charset_min &&
+	    encoding->no_encoding < mbfl_no_encoding_charset_max) {
+		return encoding->name;
+	} else {
+		return NULL;
+	}
+}
+
+enum mbfl_no_encoding
+mbfl_identify_encoding_no(mbfl_string *string, enum mbfl_no_encoding *elist, int elistsz, int strict)
+{
+	const mbfl_encoding *encoding;
+
+	encoding = mbfl_identify_encoding(string, elist, elistsz, strict);
+	if (encoding != NULL &&
+	    encoding->no_encoding > mbfl_no_encoding_charset_min &&
+	    encoding->no_encoding < mbfl_no_encoding_charset_max) {
+		return encoding->no_encoding;
+	} else {
+		return mbfl_no_encoding_invalid;
+	}
+}
+
 /*
  *  strlen
  */
